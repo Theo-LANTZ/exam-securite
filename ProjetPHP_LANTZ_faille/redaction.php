@@ -1,16 +1,5 @@
 <?php
 date_default_timezone_set("Europe/Paris");
-session_start();
-if($_SESSION['nom']==""){
-	header("Location:Page_accueil.php");
-	$_SESSION['erreur']="Utilisateur non connecté";
-}
-else{
-$_SESSION['erreur']="";
-}
-$nom = $_SESSION['nom'];
-$prenom = $_SESSION['prenom'];
-$mail = $_SESSION['adressemail'];
 
 
 try{
@@ -27,6 +16,7 @@ if(isset($_POST['formredaction']))
 	$textnews = htmlspecialchars($_POST['textnews']);
 	$date = date("Y-m-d H:i:s");
 	$idtheme = intval($_POST['theme']);
+	$idredacteur = 0;
 	
 	if(!empty($_POST['titre']) AND !empty($_POST['textnews']))
 		{		
@@ -106,9 +96,6 @@ if(isset($_POST['formredaction']))
 </div>
 <br>
 <div class="footer">
-<?php
-echo "Redacteur :" .$_SESSION['nom']. " " .$_SESSION['prenom']; 
-?>
 </div>
 	</body>
 	</html>

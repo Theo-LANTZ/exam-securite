@@ -13,14 +13,15 @@ if(isset($_POST['formconnexion']))
 {
 	$mailconnect = $_POST['mailconnect'];
 	$mdpconnect = $_POST['mdpconnect'];
-		$requser = $bdd->query('SELECT * FROM redacteur WHERE  ');
+		$requser = $bdd->query("SELECT * FROM redacteur WHERE adressemail = '".$mailconnect."' AND motdepasse = '" .$mdpconnect. "'; ");
 		$rows = $requser->fetchAll(PDO::FETCH_ASSOC);
-
+		
 		if(sizeof($rows)>0){
-			echo "Vous voilà connecté !";
+			echo "<p>Vous voilà connecté !</p>";
 		}else{
-			echo "Il y a eu une erreur";
+			echo "<p>Il y a eu une erreur</p>";
 		}
+		
 }	
 ?>
 
@@ -44,7 +45,7 @@ if(isset($_POST['formconnexion']))
 			</form>
 		</center>
 		</div>
-
+		
 		<div class="middle">
       <button onclick="window.location.href='Page_accueil.php';" class="btn btn1">Accueil</button>
     </div>
